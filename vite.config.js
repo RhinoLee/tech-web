@@ -11,4 +11,16 @@ export default defineConfig({
       "@": fileURLToPath(new URL("./src", import.meta.url)),
     },
   },
+  publicPath: process.env.NODE_ENV === 'production'
+    ? '/tech-web/'
+    : '/',
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `
+          @import "@/assets/css/_variables.scss";
+        `
+      }
+    }
+  }
 });
