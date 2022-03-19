@@ -50,18 +50,22 @@ const mediaInfo = reactive({
           <button class="arrow right"></button>
         </div>
       </div>
+    </div>
 
+    <div class="container slider">
       <div class="row">
-        <div v-for="(media, idx) in mediaInfo.data" :key="idx" class="media-item">
-          <div class="pic">
-            <img :src="media.pic" :alt="media.content" />
-          </div>
-          <div class="date">
-            <span>{{ media.content }}</span>
-          </div>
-          <div class="txt">
-            <div class="cate">[{{ media.cate }}]</div>
-            <div class="content">{{ media.content }}</div>
+        <div class="slider-row">
+          <div v-for="(media, idx) in mediaInfo.data" :key="idx" class="media-item">
+            <div class="pic">
+              <img :src="media.pic" :alt="media.content" />
+            </div>
+            <div class="txt">
+              <div class="date">
+                <span>{{ media.date }}</span>
+              </div>
+              <div class="cate">[{{ media.cate }}]</div>
+              <div class="content">{{ media.content }}</div>
+            </div>
           </div>
         </div>
       </div>
@@ -72,40 +76,70 @@ const mediaInfo = reactive({
 <style lang="scss" scoped>
 .media-area {
   padding-top: 100px;
+  .container {
+    &.slider {
+      max-width: none;
+      width: 100%;
+      .row {
+        display: flex;
+        overflow: hidden;
+        width: 93%;
+        margin-left: auto;
+      }
+    }
+  }
 }
+
+.slider-row {
+  display: flex;
+  margin-left: -12px;
+  .media-item {
+    width: 33.333333%;
+    padding-left: 12px;
+    padding-right: 12px;
+    img {
+      width: 100%;
+    }
+    &:nth-child(5) {
+      display: none;
+    }
+    .txt {
+      padding-top: 15px;
+      .cate {
+        padding-bottom: 5px;
+        font-weight: bold;
+        font-size: 1.3rem;
+      }
+      .date {
+        padding-bottom: 15px;
+        span {
+          color: $blue;
+          font-weight: bold;
+          font-size: 1.4rem;
+        }
+      }
+      .content {
+        font-size: 1.2rem;
+      }
+    }
+  }
+}
+
 .nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 40px;
   .arrow-group {
     display: flex;
     & > button {
-      border: 1px solid #A5A5A5;
+      border: 1px solid #a5a5a5;
       width: 70px;
       height: 70px;
       background: #fff;
       & + button {
         border-left: none;
       }
-    }
-    .txt {
-      padding-top: 15px;
-      .date {
-        padding-bottom: 15px;
-      }
-    }
-  }
-}
-.row {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr) 20%;
-  gap: 25px;
-  width: 100%;
-  overflow: hidden;
-  .media-item {
-    img {
-      width: 100%;
-
     }
   }
 }
