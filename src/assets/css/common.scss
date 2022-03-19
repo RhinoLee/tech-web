@@ -1,0 +1,43 @@
+html {
+  font-size: 12px;
+}
+* {
+	box-sizing: border-box;
+  font-size: 1.3rem;
+}
+
+img {
+  display: block;
+  &.full-width {
+    width: 100%;
+  }
+}
+
+h2 {
+  &.title {
+    font-size: 2.8rem;
+    line-height: 1.6;
+  }
+}
+
+h3 {
+  &.subtitle {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: $blue;
+  }  
+}
+
+.txt {
+  p {
+    font-size: 1.2rem;
+    line-height: 2;
+    letter-spacing: 1px;
+  }
+}
+
+.container {
+  width: 86%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
