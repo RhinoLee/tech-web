@@ -84,17 +84,24 @@ img {
     grid-template-columns: 1fr 1fr;
     .item {
       display: grid;
-      grid-template-columns: 25% 75%;
-      gap: 16px;
-      padding-bottom: 35px;
+      grid-template-columns: 16% 23% 1fr;
+      margin-bottom: 35px;
       padding-right: 57px;
       * {
         letter-spacing: 1px;
       }
+      &:nth-child(2n+1) {
+        border-right: 1px solid #CCC;
+      }
+      .pic {
+        grid-column: 2 / 3;
+      }
       .txt {
+        grid-column: 3 / 4;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+        padding-left: 16px;
       }
       .content {
         font-size: 1.3rem;
