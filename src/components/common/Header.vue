@@ -59,12 +59,15 @@ header {
 }
 .burger-menu {
   position: fixed;
-  top: 7%;
+  top: 5.5%;
   right: 40px;
   width: 30px;
   height: 25px;
   cursor: pointer;
   z-index: 2;
+  @media (min-width: 576px) {
+    display: none;
+  }
   .burger {
     position: relative;
     width: 100%;
@@ -109,7 +112,11 @@ header {
   height: 88px;
   @media (min-width: 576px) {
     display: grid;
-    grid-template-columns: 160px 1fr 2fr 77px;
+    grid-template-columns: 30px 1fr 2fr 30px;
+  }
+  @media (min-width: 768px) {
+    display: grid;
+    grid-template-columns: 40px 1fr 2fr 77px;
   }
 
   .logo {
@@ -118,22 +125,26 @@ header {
     }
   }
   .nav {
-    position: fixed;
-    top: 0;
-    left: -100%;
-    padding-top: 88px;
-    padding-left: 30px;
     width: 100%;
     height: 100%;
-    overflow-y: scroll;
-    background: $blue-gradient;
     z-index: 1;
-    transition: 0.3s linear all;
+    @media (max-width: 575px) {
+      position: fixed;
+      top: 0;
+      left: -100%;
+      padding-top: 88px;
+      padding-left: 30px;
+      overflow-y: scroll;
+      background: $blue-gradient;
+      transition: 0.3s linear all;
+    }
     @media (min-width: 576px) {
       grid-column: -3 / -2;
     }
     &.open {
-      left: 0;
+      @media (max-width: 575px) {
+        left: 0;
+      }
     }
     ul {
       height: 100%;
@@ -142,37 +153,51 @@ header {
         grid-template-columns: repeat(7, 1fr);
       }
       li {
+        // padding: 0 10px;
         @media (min-width: 576px) {
           align-self: center;
           text-align: center;
-          padding: 0 10px;
+          
         }
       }
       a {
         display: block;
         width: 100%;
         padding: 5px 0;
-        color: #fff;
+        @media (max-width: 575px) {
+          color: #fff;
+        }
+        span {
+          font-size: 1.1rem;
+        }
       }
     }
     .main-ul {
-      width: 80%;
+      @media (max-width: 575px) {
+        width: 80%;
+      }
       > li:not(.lang) {
-        position: relative;
-        border-bottom: 1px solid #fff;
-        & + li {
-          margin-top: 10px;
+        @media (max-width: 575px) {
+          border-bottom: 1px solid #fff;
+          & + li {
+            margin-top: 10px;
+          }
         }
         a {
-          display: flex;
-          justify-content: space-between;
+          @media (max-width: 575px) {
+            display: flex;
+            justify-content: space-between;
+          }
           span {
-            color: #FFF;
+            @media (max-width: 575px) {
+              color: #fff;
+            }
           }
           i {
             position: relative;
             width: 10px;
-            &::before, &::after {
+            &::before,
+            &::after {
               content: "";
               display: block;
               position: absolute;
@@ -191,6 +216,14 @@ header {
               transform: rotate(45deg);
             }
           }
+        }
+      }
+      .lang {
+        select {
+          width: 53px;
+          border: none;
+          outline: none;
+          font-size: 1.1rem;
         }
       }
     }

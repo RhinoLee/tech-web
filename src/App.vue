@@ -66,7 +66,7 @@ const navList = reactive({
       subNavList: []
     },
     {
-      title: "合作通路",
+      title: "合作夥伴",
       link: "#",
       subNavList: []
     },
